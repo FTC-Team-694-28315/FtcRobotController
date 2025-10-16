@@ -11,9 +11,9 @@ public class TeleOP extends LinearOpMode {
 
     private DcMotor flywheel;
     private DcMotor coreHex;
-    private DcMotor leftDrive;
+    private DcMotor left;
     private CRServo servo;
-    private DcMotor rightDrive;
+    private DcMotor right;
 
     // Setting our velocity targets. These values are in ticks per second!
     private static final int bankVelocity = 1300;
@@ -24,15 +24,15 @@ public class TeleOP extends LinearOpMode {
     public void runOpMode() {
         flywheel = hardwareMap.get(DcMotor.class, "flywheel");
         coreHex = hardwareMap.get(DcMotor.class, "coreHex");
-        leftDrive = hardwareMap.get(DcMotor.class, "leftDrive");
+        left = hardwareMap.get(DcMotor.class, "left");
         servo = hardwareMap.get(CRServo.class, "servo");
-        rightDrive = hardwareMap.get(DcMotor.class, "rightDrive");
+        right = hardwareMap.get(DcMotor.class, "right");
 
         // Establishing the direction and mode for the motors
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flywheel.setDirection(DcMotor.Direction.REVERSE);
         coreHex.setDirection(DcMotor.Direction.REVERSE);
-        leftDrive.setDirection(DcMotor.Direction.REVERSE);
+        left.setDirection(DcMotor.Direction.REVERSE);
         //Ensures the servo is active and ready
         servo.setPower(0);
 
@@ -60,8 +60,8 @@ public class TeleOP extends LinearOpMode {
 
         x = gamepad1.right_stick_x;
         y = -gamepad1.left_stick_y;
-        leftDrive.setPower(y - x);
-        rightDrive.setPower(y + x);
+        left.setPower(y - x);
+        right.setPower(y + x);
     }
 
     /**
