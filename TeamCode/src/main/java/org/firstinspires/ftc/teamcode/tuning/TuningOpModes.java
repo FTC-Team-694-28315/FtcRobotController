@@ -89,6 +89,10 @@ public final class TuningOpModes {
             }
 
             @Override
+            public float getHeadingVelocity() {
+                return (float) pl.driver.getHeadingVelocity(UnnormalizedAngleUnit.DEGREES);
+            }
+
             public float getHeadingVelocity(UnnormalizedAngleUnit unit) {
                 return (float) pl.driver.getHeadingVelocity(unit);
             }
